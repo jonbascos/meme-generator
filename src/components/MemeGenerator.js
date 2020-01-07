@@ -8,6 +8,8 @@ class MemeGenerator extends React.Component {
 		this.state = {
 			topText: '',
 			bottomText: '',
+			topColor: 'white',
+			bottomColor: 'white',
 			randomImg: 'https://i.imgflip.com/59qi.jpg',
 			allImgs: []
 		};
@@ -47,31 +49,58 @@ class MemeGenerator extends React.Component {
 	render() {
 		return (
 			<div>
-				<form className='memetext' onSubmit={this.handleSubmit}>
-					<input
-						type='text'
-						name='topText'
-						value={this.state.topText}
-						placeholder='Top Text'
-						onChange={this.handleChange}
-					/>
-					<br />
-					<input
-						type='text'
-						name='bottomText'
-						value={this.state.bottomText}
-						placeholder='Bottom Text'
-						onChange={this.handleChange}
-					/>
-					<br />
+				<form onSubmit={this.handleSubmit}>
+					<div className='inputDiv'>
+						<div className='inputBlocks'>
+							<input
+								type='text'
+								name='topText'
+								value={this.state.topText}
+								placeholder='Top Text'
+								onChange={this.handleChange}
+							/>
+							<input
+								type='text'
+								name='topColor'
+								placeholder='Top Text Color'
+								onChange={this.handleChange}
+							/>
+						</div>
+						<br />
+						<div className='inputBlocks'>
+							<input
+								type='text'
+								name='bottomText'
+								placeholder='Bottom Text'
+								onChange={this.handleChange}
+							/>
+							<input
+								type='text'
+								name='bottomColor'
+								placeholder='Bottom Text Color'
+								onChange={this.handleChange}
+							/>
+						</div>
+					</div>
+
 					<button>Generate Meme</button>
 					<div className='meme'>
 						<img
 							src={this.state.randomImg}
 							alt='Nothing right now'
 						/>
-						<h2 className='top'>{this.state.topText}</h2>
-						<h2 className='bottom'>{this.state.bottomText}</h2>
+						<h2
+							className='top'
+							style={{ color: this.state.topColor }}
+						>
+							{this.state.topText}
+						</h2>
+						<h2
+							className='bottom'
+							style={{ color: this.state.bottomColor }}
+						>
+							{this.state.bottomText}
+						</h2>
 					</div>
 				</form>
 			</div>
